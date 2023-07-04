@@ -271,7 +271,7 @@ public class WebMonitorEndpoint<T extends RestfulGateway> extends RestServerEndp
             final CompletableFuture<String> localAddressFuture) {
         ArrayList<Tuple2<RestHandlerSpecification, ChannelInboundHandler>> handlers =
                 new ArrayList<>(30);
-
+        // 将通过webSubmissionExtension加载的Handler添加到Handlers中
         final Collection<Tuple2<RestHandlerSpecification, ChannelInboundHandler>>
                 webSubmissionHandlers = initializeWebSubmissionHandlers(localAddressFuture);
         handlers.addAll(webSubmissionHandlers);
