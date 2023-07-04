@@ -169,14 +169,16 @@ public abstract class RestServerEndpoint implements RestService {
      */
     public final void start() throws Exception {
         synchronized (lock) {
+            //检查RestServerEndpoint.state是否为CREATED状态。
             Preconditions.checkState(
                     state == State.CREATED, "The RestServerEndpoint cannot be restarted.");
 
             log.info("Starting rest endpoint.");
-
+            //启动Rest Endpoint，创建Handler使用的路由类Router，用于根据地址寻找对应的Handlers。
             final Router router = new Router();
             final CompletableFuture<String> restAddressFuture = new CompletableFuture<>();
-
+            //调用initializeHandlers()方法初始化子类注册的Handlers，
+            // 例如 WebMonitorEndpoint中的Handlers实现。
             handlers = initializeHandlers(restAddressFuture);
 
             /* sort the handlers such that they are ordered the following:
@@ -186,19 +188,28 @@ public abstract class RestServerEndpoint implements RestService {
              * /jobs/:jobid/config
              * /:*
              */
+            //handlers 按照以上顺序排序
             Collections.sort(handlers, RestHandlerUrlComparator.INSTANCE);
-
+            //handlers 检查 HashSet 保证唯一性
             checkAllEndpointsAndHandlersAreUnique(handlers);
+            //调用registerHandler()方法注册已经加载的Handlers。
             handlers.forEach(handler -> registerHandler(router, handler, log));
-
+            //创建ChannelInitializer服务，初始化Netty中的Channel，
+            // 在 initChannel()方法中设定SocketChannel中Pipeline使用的拦截器。
+            // 在Netty 中使用ServerBootstrap或者bootstrap启动服务端或者客户端时，
+            // 会为每 个Channel链接创建一个独立的Pipeline，此时需要将自定义的Handler加 入Pipeline。
+            // 这里实际上会将加载的Handlers加入创建的Pipeline。
+            // 在 Pipeline中也会按照顺序在尾部增加HttpServerCodec、FileUpload-Handler 以及ChunkedWriteHandler等基础Handlers处理器。
             ChannelInitializer<SocketChannel> initializer =
                     new ChannelInitializer<SocketChannel>() {
 
                         @Override
                         protected void initChannel(SocketChannel ch) throws ConfigurationException {
+                            // 创建路由RouterHandler，完成业务请求拦截
                             RouterHandler handler = new RouterHandler(router, responseHeaders);
 
                             // SSL should be the first handler in the pipeline
+                            // 将SSL放置在第一个Handler上
                             if (isHttpsEnabled()) {
                                 ch.pipeline()
                                         .addLast(
@@ -231,22 +242,29 @@ public abstract class RestServerEndpoint implements RestService {
                                     .addLast(new PipelineErrorHandler(log, responseHeaders));
                         }
                     };
-
+            //创建bossGroup和workerGroup两个NioEventLoopGroup实例，
+            // 可 以将其理解为两个线程池，
+            // bossGroup设置了一个用于处理连接请求和建立连接的线程，
+            // workGroup用于在连接建立之后处理I/O请求。
             NioEventLoopGroup bossGroup =
                     new NioEventLoopGroup(
                             1, new ExecutorThreadFactory("flink-rest-server-netty-boss"));
             NioEventLoopGroup workerGroup =
                     new NioEventLoopGroup(
                             0, new ExecutorThreadFactory("flink-rest-server-netty-worker"));
-
+            //创建ServerBootstrap启动类
             bootstrap = new ServerBootstrap();
+            //绑定bossGroup、workerGroup和 initializer等参数。
             bootstrap
                     .group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(initializer);
-
+            //为了防止出现端口占用的情况，从restBindPortRange中抽取端口 范围。
+            // 使用bootstrap.bind(chosenPort)按照顺序进行绑定，
+            // 如果绑定成功 则调用bind()方法，启动Server-Bootstrap服务，
+            // 此时Web端口(默认为 8081)就可以正常访问了
             Iterator<Integer> portsIterator;
-            try {
+            try {//从restBindPortRange选择端口
                 portsIterator = NetUtils.getPortRangeFromString(restBindPortRange);
             } catch (IllegalConfigurationException e) {
                 throw e;
@@ -254,7 +272,7 @@ public abstract class RestServerEndpoint implements RestService {
                 throw new IllegalArgumentException(
                         "Invalid port range definition: " + restBindPortRange);
             }
-
+            // 从portsIterator选择没有被占用的端口，作为bootstrap启动的端口
             int chosenPort = 0;
             while (portsIterator.hasNext()) {
                 try {
@@ -282,7 +300,7 @@ public abstract class RestServerEndpoint implements RestService {
                         "Could not start rest endpoint on any port in port range "
                                 + restBindPortRange);
             }
-
+            // ServerBootstrap启动成功，输出restBindAddress和chosenPort
             log.debug("Binding rest endpoint to {}:{}.", restBindAddress, chosenPort);
 
             final InetSocketAddress bindAddress = (InetSocketAddress) serverChannel.localAddress();
@@ -300,9 +318,10 @@ public abstract class RestServerEndpoint implements RestService {
             restBaseUrl = new URL(determineProtocol(), advertisedAddress, port, "").toString();
 
             restAddressFuture.complete(restBaseUrl);
-
+            //将RestServerEndpoint中的状态设定为RUNNING，
+            // 调用 WebMonitorEndpoint.startInternal()方法，启动RPC高可用服务。
             state = State.RUNNING;
-
+            // 调用内部启动方法，启动RestEndpoint服务
             startInternal();
         }
     }
