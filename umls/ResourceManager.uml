@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.flink.runtime.resourcemanager.ResourceManager</OriginalElement>
+  <nodes>
+    <node x="6023.690721649484" y="1185.5">org.apache.flink.runtime.clusterframework.types.ResourceIDRetrievable</node>
+    <node x="4547.25" y="238.0">org.apache.flink.runtime.rpc.RpcEndpoint</node>
+    <node x="3159.0" y="3672.0">org.apache.flink.runtime.resourcemanager.ResourceManager.JobLeaderIdActionsImpl</node>
+    <node x="4776.0" y="0.0">java.lang.AutoCloseable</node>
+    <node x="2307.0" y="3650.0">org.apache.flink.runtime.resourcemanager.ResourceManager.JobManagerHeartbeatListener</node>
+    <node x="2771.0" y="3683.0">org.apache.flink.runtime.resourcemanager.ResourceManager.ResourceManagerBlocklistContext</node>
+    <node x="4779.125" y="107.0">org.apache.flink.runtime.rpc.RpcGateway</node>
+    <node x="3615.0" y="547.5">org.apache.flink.runtime.blocklist.BlocklistListener</node>
+    <node x="1281.9999999999995" y="3650.0">org.apache.flink.runtime.resourcemanager.ResourceManager.TaskManagerHeartbeatListener</node>
+    <node x="1755.9999999999998" y="3694.0">org.apache.flink.runtime.resourcemanager.ResourceManager.ResourceEventListenerImpl</node>
+    <node x="7841.5" y="4295.5">org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager.ResourceAllocatorImpl</node>
+    <node x="2604.0" y="547.5">org.apache.flink.runtime.rpc.FencedRpcGateway</node>
+    <node x="2840.75" y="1163.0">org.apache.flink.runtime.rpc.FencedRpcEndpoint</node>
+    <node x="3427.8492268041236" y="107.0">org.apache.flink.util.AutoCloseableAsync</node>
+    <node x="5115.5" y="1185.5">org.apache.flink.runtime.security.token.DelegationTokenManager.Listener</node>
+    <node x="2099.783505154639" y="130.5">java.io.Serializable</node>
+    <node x="0.0" y="3660.5">org.apache.flink.runtime.resourcemanager.ResourceManager.ResourceRequirementHandling</node>
+    <node x="3538.0" y="3616.0">org.apache.flink.runtime.resourcemanager.TestingResourceManagerFactory.MockResourceManager</node>
+    <node x="2860.0" y="514.5">org.apache.flink.runtime.io.network.partition.ClusterPartitionManager</node>
+    <node x="8310.5" y="4274.0">org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager.GatewayMainThreadExecutor</node>
+    <node x="819.9999999999995" y="3682.5">org.apache.flink.runtime.resourcemanager.ResourceManager.JobMasterHeartbeatSender</node>
+    <node x="7146.0" y="3242.0">org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager</node>
+    <node x="5193.0" y="560.0">org.apache.flink.annotation.Internal</node>
+    <node x="3005.75" y="1504.0">org.apache.flink.runtime.resourcemanager.ResourceManager</node>
+    <node x="5305.0" y="3616.0">org.apache.flink.runtime.resourcemanager.StandaloneResourceManager</node>
+    <node x="357.99999999999955" y="3682.5">org.apache.flink.runtime.resourcemanager.ResourceManager.TaskExecutorHeartbeatSender</node>
+    <node x="4529.5" y="1041.5">org.apache.flink.runtime.rpc.RpcEndpoint.MainThreadExecutor</node>
+    <node x="3170.75" y="976.0">org.apache.flink.runtime.resourcemanager.ResourceManagerGateway</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.flink.runtime.rpc.FencedRpcEndpoint" target="java.io.Serializable" relationship="DEPENDENCY">
+      <point x="-77.5" y="-50.0" />
+      <point x="2918.25" y="954.0" />
+      <point x="2315.875" y="954.0" />
+      <point x="2315.875" y="206.0" />
+      <point x="2207.033505154639" y="206.0" />
+      <point x="35.75" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.StandaloneResourceManager" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="GENERALIZATION">
+      <point x="0.0" y="-117.0" />
+      <point x="6215.5" y="3221.0" />
+      <point x="6371.974226804124" y="3221.0" />
+      <point x="6371.974226804124" y="3211.0" />
+      <point x="4290.5" y="3211.0" />
+      <point x="428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager.GatewayMainThreadExecutor" target="org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-83.0" />
+      <point x="8579.0" y="4249.0" />
+      <point x="8322.5" y="4249.0" />
+      <point x="0.0" y="491.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.TestingResourceManagerFactory.MockResourceManager" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="GENERALIZATION">
+      <point x="0.0" y="-117.0" />
+      <point x="4411.5" y="3221.0" />
+      <point x="6371.974226804124" y="3221.0" />
+      <point x="6371.974226804124" y="3211.0" />
+      <point x="4290.5" y="3211.0" />
+      <point x="428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager.ResourceRequirementHandling" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="INNER_CLASS">
+      <point x="84.5" y="-72.5" />
+      <point x="253.5" y="3221.0" />
+      <point x="1861.0992268041236" y="3221.0" />
+      <point x="1861.0992268041236" y="3211.0" />
+      <point x="3434.0" y="3211.0" />
+      <point x="-428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpoint" target="org.apache.flink.util.AutoCloseableAsync" relationship="REALIZATION">
+      <point x="0.0" y="-337.0" />
+      <point x="4751.25" y="206.0" />
+      <point x="3576.8492268041236" y="206.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager" target="org.apache.flink.runtime.rpc.FencedRpcEndpoint" relationship="GENERALIZATION">
+      <point x="-571.0" y="-843.0" />
+      <point x="3291.25" y="1482.0" />
+      <point x="2995.75" y="1482.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManagerGateway" target="org.apache.flink.runtime.rpc.FencedRpcGateway" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-237.0" />
+      <point x="3574.75" y="954.0" />
+      <point x="3319.0" y="954.0" />
+      <point x="3319.0" y="934.0" />
+      <point x="2722.0" y="934.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager" target="org.apache.flink.runtime.resourcemanager.ResourceManagerGateway" relationship="REALIZATION">
+      <point x="0.0" y="-843.0" />
+      <point x="3862.25" y="1482.0" />
+      <point x="4146.75" y="1482.0" />
+      <point x="4146.75" y="1472.0" />
+      <point x="3574.75" y="1472.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.FencedRpcGateway" target="org.apache.flink.runtime.rpc.RpcGateway" relationship="INTERFACE_GENERALIZATION">
+      <point x="59.0" y="-27.5" />
+      <point x="2781.0" y="216.0" />
+      <point x="4816.875" y="216.0" />
+      <point x="-37.75" y="38.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManagerGateway" target="org.apache.flink.runtime.blocklist.BlocklistListener" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-237.0" />
+      <point x="3574.75" y="954.0" />
+      <point x="3319.0" y="954.0" />
+      <point x="3319.0" y="934.0" />
+      <point x="3916.0" y="934.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpoint" target="org.apache.flink.runtime.rpc.RpcGateway" relationship="REALIZATION">
+      <point x="0.0" y="-337.0" />
+      <point x="4751.25" y="206.0" />
+      <point x="4892.375" y="206.0" />
+      <point x="37.75" y="38.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager.JobMasterHeartbeatSender" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-50.5" />
+      <point x="1040.9999999999995" y="3221.0" />
+      <point x="1861.0992268041236" y="3221.0" />
+      <point x="1861.0992268041236" y="3211.0" />
+      <point x="3434.0" y="3211.0" />
+      <point x="-428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager.TaskExecutorHeartbeatSender" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-50.5" />
+      <point x="578.9999999999995" y="3221.0" />
+      <point x="1861.0992268041236" y="3221.0" />
+      <point x="1861.0992268041236" y="3211.0" />
+      <point x="3434.0" y="3211.0" />
+      <point x="-428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager" target="org.apache.flink.runtime.clusterframework.types.ResourceIDRetrievable" relationship="DEPENDENCY">
+      <point x="571.0" y="-843.0" />
+      <point x="4433.25" y="1482.0" />
+      <point x="6137.190721649484" y="1482.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager.ResourceRequirementHandling" target="java.io.Serializable" relationship="REALIZATION">
+      <point x="-84.5" y="-72.5" />
+      <point x="84.5" y="3221.0" />
+      <point x="164.0" y="3221.0" />
+      <point x="164.0" y="216.0" />
+      <point x="2135.533505154639" y="216.0" />
+      <point x="-35.75" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager.JobLeaderIdActionsImpl" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-61.0" />
+      <point x="3338.5" y="3221.0" />
+      <point x="1861.0992268041236" y="3221.0" />
+      <point x="1861.0992268041236" y="3211.0" />
+      <point x="3434.0" y="3211.0" />
+      <point x="-428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpoint.MainThreadExecutor" target="org.apache.flink.runtime.rpc.RpcEndpoint" relationship="INNER_CLASS">
+      <point x="-141.5" y="-171.5" />
+      <point x="4671.0" y="954.0" />
+      <point x="4853.25" y="954.0" />
+      <point x="102.0" y="337.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager.ResourceEventListenerImpl" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-39.0" />
+      <point x="2021.4999999999998" y="3221.0" />
+      <point x="1861.0992268041236" y="3221.0" />
+      <point x="1861.0992268041236" y="3211.0" />
+      <point x="3434.0" y="3211.0" />
+      <point x="-428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.FencedRpcEndpoint" target="org.apache.flink.runtime.rpc.RpcEndpoint" relationship="GENERALIZATION">
+      <point x="77.5" y="-50.0" />
+      <point x="3073.25" y="944.0" />
+      <point x="4649.25" y="944.0" />
+      <point x="-102.0" y="337.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager" target="org.apache.flink.runtime.clusterframework.types.ResourceIDRetrievable" relationship="DEPENDENCY">
+      <point x="588.25" y="-491.0" />
+      <point x="8910.75" y="3221.0" />
+      <point x="8327.5" y="3221.0" />
+      <point x="8327.5" y="1482.0" />
+      <point x="6137.190721649484" y="1482.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager.ResourceManagerBlocklistContext" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-50.0" />
+      <point x="2955.0" y="3221.0" />
+      <point x="1861.0992268041236" y="3221.0" />
+      <point x="1861.0992268041236" y="3211.0" />
+      <point x="3434.0" y="3211.0" />
+      <point x="-428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager.JobManagerHeartbeatListener" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-83.0" />
+      <point x="2529.0" y="3221.0" />
+      <point x="1861.0992268041236" y="3221.0" />
+      <point x="1861.0992268041236" y="3211.0" />
+      <point x="3434.0" y="3211.0" />
+      <point x="-428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.RpcEndpoint.MainThreadExecutor" target="java.lang.AutoCloseable" relationship="REALIZATION">
+      <point x="141.5" y="-171.5" />
+      <point x="4954.0" y="954.0" />
+      <point x="5023.75" y="954.0" />
+      <point x="5023.75" y="81.0" />
+      <point x="4899.75" y="81.0" />
+      <point x="41.25" y="27.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="GENERALIZATION">
+      <point x="-588.25" y="-491.0" />
+      <point x="7734.25" y="3221.0" />
+      <point x="6371.974226804124" y="3221.0" />
+      <point x="6371.974226804124" y="3211.0" />
+      <point x="4290.5" y="3211.0" />
+      <point x="428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager.TaskManagerHeartbeatListener" target="org.apache.flink.runtime.resourcemanager.ResourceManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-83.0" />
+      <point x="1508.9999999999995" y="3221.0" />
+      <point x="1861.0992268041236" y="3221.0" />
+      <point x="1861.0992268041236" y="3211.0" />
+      <point x="3434.0" y="3211.0" />
+      <point x="-428.25" y="843.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.security.token.DelegationTokenManager.Listener" target="org.apache.flink.annotation.Internal" relationship="ANNOTATION">
+      <point x="0.0" y="-27.5" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManagerGateway" target="org.apache.flink.runtime.io.network.partition.ClusterPartitionManager" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-237.0" />
+      <point x="3574.75" y="954.0" />
+      <point x="3319.0" y="954.0" />
+      <point x="3319.0" y="934.0" />
+      <point x="3227.5" y="934.0" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager.ResourceAllocatorImpl" target="org.apache.flink.runtime.resourcemanager.active.ActiveResourceManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-61.5" />
+      <point x="8066.0" y="4249.0" />
+      <point x="8322.5" y="4249.0" />
+      <point x="0.0" y="491.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.rpc.FencedRpcGateway" target="java.io.Serializable" relationship="DEPENDENCY">
+      <point x="-59.0" y="-27.5" />
+      <point x="2663.0" y="216.0" />
+      <point x="2315.875" y="216.0" />
+      <point x="2315.875" y="206.0" />
+      <point x="2207.033505154639" y="206.0" />
+      <point x="35.75" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.resourcemanager.ResourceManager" target="org.apache.flink.runtime.security.token.DelegationTokenManager.Listener" relationship="REALIZATION">
+      <point x="0.0" y="-843.0" />
+      <point x="3862.25" y="1482.0" />
+      <point x="4146.75" y="1482.0" />
+      <point x="4146.75" y="1472.0" />
+      <point x="5249.5" y="1472.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="org.apache.flink.util.AutoCloseableAsync" target="java.lang.AutoCloseable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-38.5" />
+      <point x="3576.8492268041236" y="81.0" />
+      <point x="4817.25" y="81.0" />
+      <point x="-41.25" y="27.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.8693402668347516" showDependencies="false" x="3384.508605356114" y="1070.918884625842" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

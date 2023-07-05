@@ -66,7 +66,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/** Implementation of {@link SlotManager} supporting fine-grained resource management. */
+/** Implementation of {@link SlotManager} supporting fine-grained resource management.
+ * fine-grained 细粒度资源管理 怎么样细粒度 https://blog.csdn.net/u010772882/article/details/125474015 */
 public class FineGrainedSlotManager implements SlotManager {
     private static final Logger LOG = LoggerFactory.getLogger(FineGrainedSlotManager.class);
 
@@ -303,7 +304,7 @@ public class FineGrainedSlotManager implements SlotManager {
             slotStatusSyncer.freeInactiveSlots(jobId);
         }
     }
-
+    //处理资源申请
     @Override
     public void processResourceRequirements(ResourceRequirements resourceRequirements) {
         checkInit();
@@ -588,6 +589,8 @@ public class FineGrainedSlotManager implements SlotManager {
      * requirements and potentially making a re-allocation can be heavy. In order to cover more
      * changes with each check, thus reduce the frequency of unnecessary re-allocations, the checks
      * are performed with a slight delay.
+     * 为了降低负载提升性能，对资源的需求检查采用延迟检查的方式，
+     * 这样一次检查可以覆盖更多的变更。延迟时间目前是固定的50毫秒，不开放修改*
      */
     private void checkResourceRequirementsWithDelay() {
         if (requirementsCheckDelay.toMillis() <= 0) {
@@ -611,6 +614,7 @@ public class FineGrainedSlotManager implements SlotManager {
 
     /**
      * DO NOT call this method directly. Use {@link #checkResourceRequirementsWithDelay()} instead.
+     * 实际的资源检查接口，会进行实际的资源分配*
      */
     private void checkResourceRequirements() {
         if (!started) {

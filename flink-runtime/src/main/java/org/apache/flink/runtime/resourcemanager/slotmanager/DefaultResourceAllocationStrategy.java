@@ -102,6 +102,7 @@ public class DefaultResourceAllocationStrategy implements ResourceAllocationStra
             BlockedTaskManagerChecker blockedTaskManagerChecker) {
         final ResourceAllocationResult.Builder resultBuilder = ResourceAllocationResult.builder();
 
+        //定义了两个资源类型：registeredResources和pendingResources
         final List<InternalResourceInfo> registeredResources =
                 getAvailableResources(
                         taskManagerResourceInfoProvider, resultBuilder, blockedTaskManagerChecker);

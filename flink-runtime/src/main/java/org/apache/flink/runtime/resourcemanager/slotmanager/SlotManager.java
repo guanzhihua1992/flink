@@ -43,6 +43,9 @@ import java.util.concurrent.Executor;
  * <p>In order to free resources and avoid resource leaks, idling task managers (task managers whose
  * slots are currently not used) and pending slot requests time out triggering their release and
  * failure, respectively.
+ *
+ * * SlotManager服务管理整个集 群的Slot计算资源，并对Slot计算资源进行统一的分配和管理
+ * 主要用 于管理和协调整个集群的Slot计算资源，同时实现了对TaskManager信息的注册和管理* *
  */
 public interface SlotManager extends AutoCloseable {
     int getNumberRegisteredSlots();

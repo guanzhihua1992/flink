@@ -91,7 +91,7 @@ public abstract class ResourceManagerFactory<T extends ResourceIDRetrievable> {
 
     public ResourceManager<T> createResourceManager(
             ResourceManagerProcessContext context, UUID leaderSessionId) throws Exception {
-
+        //创建 ResourceManagerRuntimeServices，主要包含了SlotManager和 JobLeaderIdService两个内部服务。
         final ResourceManagerRuntimeServices resourceManagerRuntimeServices =
                 createResourceManagerRuntimeServices(
                         context.getRmRuntimeServicesConfig(),
@@ -160,7 +160,7 @@ public abstract class ResourceManagerFactory<T extends ResourceIDRetrievable> {
             RpcService rpcService,
             HighAvailabilityServices highAvailabilityServices,
             SlotManagerMetricGroup slotManagerMetricGroup) {
-
+        //创建 ResourceManagerRuntimeServices，主要包含了SlotManager和 JobLeaderIdService两个内部服务。
         return ResourceManagerRuntimeServices.fromConfiguration(
                 rmRuntimeServicesConfig,
                 highAvailabilityServices,

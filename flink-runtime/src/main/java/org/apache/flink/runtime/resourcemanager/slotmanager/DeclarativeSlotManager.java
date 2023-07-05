@@ -62,7 +62,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
-/** Implementation of {@link SlotManager} supporting declarative slot management. */
+/** Implementation of {@link SlotManager} supporting declarative slot management.
+ * 申明式资源管理*/
 public class DeclarativeSlotManager implements SlotManager {
     private static final Logger LOG = LoggerFactory.getLogger(DeclarativeSlotManager.class);
 

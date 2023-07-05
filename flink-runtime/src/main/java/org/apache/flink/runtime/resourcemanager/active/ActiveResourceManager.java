@@ -80,6 +80,9 @@ import static org.apache.flink.util.Preconditions.checkState;
  * <p>This resource manager actively requests and releases resources from/to the external resource
  * management frameworks. With different {@link ResourceManagerDriver} provided, this resource
  * manager can work with various frameworks.
+ * 动态资源管理的集群 类型，可以按需启动TaskManager资源，
+ * * 根据Job所需的资源请求动态启动TaskManager节点，
+ * * 这种资源管理方式不用担心资源浪费和资源动 态伸缩的问题*
  */
 public class ActiveResourceManager<WorkerType extends ResourceIDRetrievable>
         extends ResourceManager<WorkerType> implements ResourceEventHandler<WorkerType> {

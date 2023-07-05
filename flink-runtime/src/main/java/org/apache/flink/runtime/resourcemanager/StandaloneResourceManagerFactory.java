@@ -74,7 +74,7 @@ public final class StandaloneResourceManagerFactory extends ResourceManagerFacto
 
         final Time standaloneClusterStartupPeriodTime =
                 ConfigurationUtils.getStandaloneClusterStartupPeriodTime(configuration);
-
+        //返回创建好的StandaloneResourceManager实例，等待启动 ResourceManager组件。
         return new StandaloneResourceManager(
                 rpcService,
                 leaderSessionId,

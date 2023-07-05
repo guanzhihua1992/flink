@@ -115,6 +115,7 @@ import static org.apache.flink.util.Preconditions.checkState;
  *   <li>{@link #registerJobMaster(JobMasterId, ResourceID, String, JobID, Time)} registers a {@link
  *       JobMaster} at the resource manager
  * </ul>
+ * 作为集群资源管理组件*
  */
 public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
         extends FencedRpcEndpoint<ResourceManagerId>

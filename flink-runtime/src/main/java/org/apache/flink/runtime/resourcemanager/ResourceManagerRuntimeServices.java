@@ -60,14 +60,14 @@ public class ResourceManagerRuntimeServices {
             HighAvailabilityServices highAvailabilityServices,
             ScheduledExecutor scheduledExecutor,
             SlotManagerMetricGroup slotManagerMetricGroup) {
-
+        // 创建SlotManager服务
         final SlotManager slotManager =
                 createSlotManager(configuration, scheduledExecutor, slotManagerMetricGroup);
-
+        // 创建JobLeaderIdService服务
         final JobLeaderIdService jobLeaderIdService =
                 new DefaultJobLeaderIdService(
                         highAvailabilityServices, scheduledExecutor, configuration.getJobTimeout());
-
+        // 返回ResourceManagerRuntimeServices
         return new ResourceManagerRuntimeServices(slotManager, jobLeaderIdService);
     }
 
@@ -75,9 +75,12 @@ public class ResourceManagerRuntimeServices {
             ResourceManagerRuntimeServicesConfiguration configuration,
             ScheduledExecutor scheduledExecutor,
             SlotManagerMetricGroup slotManagerMetricGroup) {
+        // 创建SlotManagerConfiguration
         final SlotManagerConfiguration slotManagerConfiguration =
                 configuration.getSlotManagerConfiguration();
+        //配置判断是否支持细粒度资源管理
         if (configuration.isEnableFineGrainedResourceManagement()) {
+            //cluster.fine-grained-resource-management.enabled为true开启细粒度资源分配
             return new FineGrainedSlotManager(
                     scheduledExecutor,
                     slotManagerConfiguration,

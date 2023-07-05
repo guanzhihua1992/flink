@@ -29,6 +29,8 @@ import java.util.concurrent.CompletableFuture;
  * manager responsible for the job). The leader id will be exposed as a future via the {@link
  * #getLeaderId(JobID)}. The future will only be completed with an exception in case the service
  * will be stopped.
+ * 通过实现jobLeaderIdListeners实时监听 JobManager的运行状态，
+ * * 以获取集群启动的作业对应的JobLeaderId信 息，防止出现JobManager无法连接的情况*
  */
 public interface JobLeaderIdService {
 
