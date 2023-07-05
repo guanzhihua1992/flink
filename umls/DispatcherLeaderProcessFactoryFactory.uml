@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcessFactoryFactory</OriginalElement>
+  <nodes>
+    <node x="998.0" y="189.0">org.apache.flink.runtime.dispatcher.runner.JobDispatcherLeaderProcessFactoryFactory</node>
+    <node x="0.0" y="211.0">org.apache.flink.client.deployment.application.ApplicationDispatcherLeaderProcessFactoryFactory</node>
+    <node x="873.2333333333333" y="0.0">org.apache.flink.annotation.Internal</node>
+    <node x="1008.0" y="82.0">org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcessFactoryFactory</node>
+    <node x="2016.0" y="233.0">org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcessFactoryFactory</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.flink.client.deployment.application.ApplicationDispatcherLeaderProcessFactoryFactory" target="org.apache.flink.annotation.Internal" relationship="ANNOTATION">
+      <point x="-244.5" y="-83.5" />
+      <point x="244.5" y="163.0" />
+      <point x="466.8166666666667" y="163.0" />
+      <point x="466.8166666666667" y="56.0" />
+      <point x="929.7333333333333" y="56.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcessFactoryFactory" target="org.apache.flink.annotation.Internal" relationship="ANNOTATION">
+      <point x="0.0" y="-27.5" />
+      <point x="1497.0" y="56.0" />
+      <point x="929.7333333333333" y="56.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.JobDispatcherLeaderProcessFactoryFactory" target="org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcessFactoryFactory" relationship="REALIZATION">
+      <point x="0.0" y="-105.5" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="org.apache.flink.client.deployment.application.ApplicationDispatcherLeaderProcessFactoryFactory" target="org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcessFactoryFactory" relationship="REALIZATION">
+      <point x="244.5" y="-83.5" />
+      <point x="733.5" y="163.0" />
+      <point x="1497.0" y="163.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcessFactoryFactory" target="org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcessFactoryFactory" relationship="REALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="2505.0" y="163.0" />
+      <point x="1497.0" y="163.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.37690776376907764" showDependencies="false" x="1497.0" y="200.0" />
+  <SelectedNodes>
+    <node>org.apache.flink.annotation.Internal</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

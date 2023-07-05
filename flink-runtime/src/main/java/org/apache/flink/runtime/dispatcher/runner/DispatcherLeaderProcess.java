@@ -26,9 +26,17 @@ import org.apache.flink.util.AutoCloseableAsync;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-/** Leader process which encapsulates the lifecycle of the {@link Dispatcher} component. */
+/** Leader process which encapsulates the lifecycle of the {@link Dispatcher} component.
+ * 负责管理Dispatcher生命周期，同时提 供了对JobGraph的任务恢复管理功能。
+ * 如果基于ZooKeeper实现了集群 高可用，DispatcherLeader-Process会将提交的JobGraph存储在ZooKeeper 中，
+ * 当集群停止或者出现异常时，就会通过DispatcherLeaderProcess对集群中的JobGraph进行恢复，
+ * 这些JobGraph都会被存储在JobGraphStore的 实现类中。
+ * SessionDispatcherLeaderProcess用于对多个 JobGraph进行恢复和提交，
+ * 在高可用集群下通过JobGraphStore中存储 JobGraph进行存储及恢复，
+ * 当集群重新启动后会将JobGraphStore中存 储的JobGraph恢复并创建相应的任务。
+ * JobDispatcherLeaderProcess 用于单个JobGraph的恢复和提交，处理逻辑比较简单 */
 interface DispatcherLeaderProcess extends AutoCloseableAsync {
-
+    //用于启动 DispatcherLeaderProcess服务 同时提供了获取DispatcherGateway、 ShutDownFuture的方法。
     void start();
 
     UUID getLeaderSessionId();

@@ -30,6 +30,7 @@ import java.util.Collections;
  *
  * <p>All operations are NoOps, because {@link JobGraph} instances cannot be recovered in this
  * recovery mode.
+ * 所有方法都是空实现 对应HighAvailabilityMode 高可用模式为NONE*
  */
 public class StandaloneJobGraphStore implements JobGraphStore {
 

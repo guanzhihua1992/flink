@@ -47,7 +47,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-/** A base {@link DispatcherLeaderProcess}. */
+/** A base {@link DispatcherLeaderProcess}. DispatcherLeaderProcess 抽象实现类*/
 @Internal
 public abstract class AbstractDispatcherLeaderProcess implements DispatcherLeaderProcess {
 
@@ -254,7 +254,7 @@ public abstract class AbstractDispatcherLeaderProcess implements DispatcherLeade
     // Internal classes
     // ------------------------------------------------------------
 
-    /** Factory for {@link DispatcherGatewayService}. */
+    /** Factory for {@link DispatcherGatewayService}. DispatcherGatewayService 工厂类*/
     public interface DispatcherGatewayServiceFactory {
         DispatcherGatewayService create(
                 DispatcherId dispatcherId,
@@ -264,7 +264,8 @@ public abstract class AbstractDispatcherLeaderProcess implements DispatcherLeade
                 JobResultStore jobResultStore);
     }
 
-    /** An accessor of the {@link DispatcherGateway}. */
+    /** An accessor of the {@link DispatcherGateway}.
+     * 主要基于Dispatcher实现的 GatewayService，用于获取DispatcherGateway。* */
     public interface DispatcherGatewayService extends AutoCloseableAsync {
         DispatcherGateway getGateway();
 

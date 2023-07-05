@@ -24,7 +24,10 @@ import org.apache.flink.util.AutoCloseableAsync;
 
 import java.util.concurrent.CompletableFuture;
 
-/** The {@link DispatcherRunner} encapsulates how a {@link Dispatcher} is being executed. */
+/** The {@link DispatcherRunner} encapsulates how a {@link Dispatcher} is being executed.
+ * 负责启动和管理Dispatcher组件，并支持对 Dispatcher组件的Leader选举。
+ * 当Dispatcher集群组件出现异常并停止 时，
+ * 会通过DispatcherRunner重新选择和启动新的Dispatcher服务，从而 保证Dispatcher组件的高可用。* */
 public interface DispatcherRunner extends AutoCloseableAsync {
 
     /**

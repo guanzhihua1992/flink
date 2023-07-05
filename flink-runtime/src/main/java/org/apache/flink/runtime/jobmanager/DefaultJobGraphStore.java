@@ -53,6 +53,7 @@ import static org.apache.flink.util.Preconditions.checkState;
  * StateHandleStore}, we could persist the job graphs to various distributed storage. Also combined
  * with different {@link JobGraphStoreWatcher}, we could get all the changes on the job graph store
  * and do the response.
+ * 默认实现 StateHandleStore 负责存储 JobGraphStoreWatcher 负责变化监控
  */
 public class DefaultJobGraphStore<R extends ResourceVersion<R>>
         implements JobGraphStore, JobGraphStore.JobGraphListener {

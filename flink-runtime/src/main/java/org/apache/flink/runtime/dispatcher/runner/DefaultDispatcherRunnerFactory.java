@@ -49,7 +49,7 @@ public class DefaultDispatcherRunnerFactory implements DispatcherRunnerFactory {
             RpcService rpcService,
             PartialDispatcherServices partialDispatcherServices)
             throws Exception {
-
+        //调用dispatcherLeaderProcessFactoryFactory.createFactory()方法创建 DispatcherLeaderProcessFactory
         final DispatcherLeaderProcessFactory dispatcherLeaderProcessFactory =
                 dispatcherLeaderProcessFactoryFactory.createFactory(
                         jobPersistenceComponentFactory,
@@ -57,17 +57,18 @@ public class DefaultDispatcherRunnerFactory implements DispatcherRunnerFactory {
                         rpcService,
                         partialDispatcherServices,
                         fatalErrorHandler);
-
+        //调用DefaultDispatcherRunner.create()方法创建DispatcherRunner
+        // 此时创建的dispatcherLeaderProcessFactory会作为参数应用到 DefaultDispatcherRunner中。
         return DefaultDispatcherRunner.create(
                 leaderElectionService, fatalErrorHandler, dispatcherLeaderProcessFactory);
     }
-
+    //创建Session模式DispatcherRunnerFactory
     public static DefaultDispatcherRunnerFactory createSessionRunner(
             DispatcherFactory dispatcherFactory) {
         return new DefaultDispatcherRunnerFactory(
                 SessionDispatcherLeaderProcessFactoryFactory.create(dispatcherFactory));
     }
-
+    //创建per-job模式DispatcherRunnerFactory
     public static DefaultDispatcherRunnerFactory createJobRunner(
             JobGraphRetriever jobGraphRetriever) {
         return new DefaultDispatcherRunnerFactory(

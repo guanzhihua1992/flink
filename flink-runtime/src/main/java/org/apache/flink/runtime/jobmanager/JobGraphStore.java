@@ -25,7 +25,9 @@ import javax.annotation.Nullable;
 
 import java.util.Collection;
 
-/** {@link JobGraph} instances for recovery. */
+/** {@link JobGraph} instances for recovery. 存储JobGraph 任务恢复
+ * JobGraphStore主要 用于存储集群中运行的JobGraph，
+ * * 当系统出现异常时，可以从 JobGraphStore中获取JobGraph并再次提交到Dispatcher上运行* */
 public interface JobGraphStore extends JobGraphWriter {
 
     /** Starts the {@link JobGraphStore} service. */

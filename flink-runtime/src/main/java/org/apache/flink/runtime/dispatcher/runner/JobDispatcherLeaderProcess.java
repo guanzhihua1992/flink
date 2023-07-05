@@ -31,14 +31,16 @@ import javax.annotation.Nullable;
 
 import java.util.UUID;
 
-/** {@link DispatcherLeaderProcess} implementation for the per-job mode. */
+/** {@link DispatcherLeaderProcess} implementation for the per-job mode.
+ * JobDispatcherLeaderProcess 用于单个JobGraph的恢复和提交，处理逻辑比较简单* */
 public class JobDispatcherLeaderProcess extends AbstractDispatcherLeaderProcess {
 
     private final DispatcherGatewayServiceFactory dispatcherGatewayServiceFactory;
 
+    //JobGraph  JobResult 都只有一个
     @Nullable private final JobGraph jobGraph;
     @Nullable private final JobResult recoveredDirtyJobResult;
-
+    //还有一个JobResultStore？
     private final JobResultStore jobResultStore;
 
     JobDispatcherLeaderProcess(
@@ -54,9 +56,10 @@ public class JobDispatcherLeaderProcess extends AbstractDispatcherLeaderProcess 
         this.recoveredDirtyJobResult = recoveredDirtyJobResult;
         this.jobResultStore = Preconditions.checkNotNull(jobResultStore);
     }
-
+    //
     @Override
     protected void onStart() {
+        // 通过dispatcherGatewayServiceFactory创建DispatcherGatewayService
         final DispatcherGatewayService dispatcherService =
                 dispatcherGatewayServiceFactory.create(
                         DispatcherId.fromUuid(getLeaderSessionId()),
@@ -64,7 +67,7 @@ public class JobDispatcherLeaderProcess extends AbstractDispatcherLeaderProcess 
                         CollectionUtil.ofNullable(recoveredDirtyJobResult),
                         ThrowingJobGraphWriter.INSTANCE,
                         jobResultStore);
-
+        //完成设定
         completeDispatcherSetup(dispatcherService);
     }
 }

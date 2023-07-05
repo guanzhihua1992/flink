@@ -50,14 +50,17 @@ import java.util.stream.Collectors;
 /**
  * Process which encapsulates the job recovery logic and life cycle management of a {@link
  * Dispatcher}.
+ * SessionDispatcherLeaderProcess用于对多个 JobGraph进行恢复和提交，
+ * * 在高可用集群下通过JobGraphStore中存储 JobGraph进行存储及恢复，
+ * * 当集群重新启动后会将JobGraphStore中存 储的JobGraph恢复并创建相应的任务*
  */
 public class SessionDispatcherLeaderProcess extends AbstractDispatcherLeaderProcess
         implements JobGraphStore.JobGraphListener {
 
     private final DispatcherGatewayServiceFactory dispatcherGatewayServiceFactory;
-
+    //JobGraphStore  对JobGraph进行存储及恢复
     private final JobGraphStore jobGraphStore;
-
+    //JobResultStore 对JobResult进行存储及恢复
     private final JobResultStore jobResultStore;
 
     private final Executor ioExecutor;
@@ -78,9 +81,10 @@ public class SessionDispatcherLeaderProcess extends AbstractDispatcherLeaderProc
         this.jobResultStore = jobResultStore;
         this.ioExecutor = ioExecutor;
     }
-
+    //启动
     @Override
     protected void onStart() {
+        //启动服务 其实就是jobGraphStore.start(this);
         startServices();
 
         onGoingRecoveryOperation =
@@ -120,18 +124,21 @@ public class SessionDispatcherLeaderProcess extends AbstractDispatcherLeaderProc
 
     private CompletableFuture<Void>
             createDispatcherBasedOnRecoveredJobGraphsAndRecoveredDirtyJobResults() {
+        //getDirtyJobResultsIfRunning
         final CompletableFuture<Collection<JobResult>> dirtyJobsFuture =
                 CompletableFuture.supplyAsync(this::getDirtyJobResultsIfRunning, ioExecutor);
 
         return dirtyJobsFuture
                 .thenApplyAsync(
-                        dirtyJobs ->
+                        dirtyJobs ->//对JobGraphStore中的方法进行恢复
                                 this.recoverJobsIfRunning(
                                         dirtyJobs.stream()
                                                 .map(JobResult::getJobId)
                                                 .collect(Collectors.toSet())),
                         ioExecutor)
+                //创建Dispatcher并将恢复的 JobGraph提交到Dispatcher上运行。
                 .thenAcceptBoth(dirtyJobsFuture, this::createDispatcherIfRunning)
+                //捕获执行过程中出现的异常并处理
                 .handle(this::onErrorIfRunning);
     }
 

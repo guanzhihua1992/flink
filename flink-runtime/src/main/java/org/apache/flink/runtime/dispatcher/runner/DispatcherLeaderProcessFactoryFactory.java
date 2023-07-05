@@ -26,7 +26,9 @@ import org.apache.flink.runtime.rpc.RpcService;
 
 import java.util.concurrent.Executor;
 
-/** Factory for {@link DispatcherLeaderProcessFactory}. */
+/** Factory for {@link DispatcherLeaderProcessFactory}.
+ * DispatcherLeaderProcessFactory 的工厂类 双层工厂模式*
+ * 有三个实现类 job session application */
 @Internal
 public interface DispatcherLeaderProcessFactoryFactory {
 

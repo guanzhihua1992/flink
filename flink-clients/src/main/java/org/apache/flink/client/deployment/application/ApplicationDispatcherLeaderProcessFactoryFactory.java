@@ -72,7 +72,8 @@ public class ApplicationDispatcherLeaderProcessFactoryFactory
                         program,
                         rpcService,
                         partialDispatcherServices);
-
+        //返回的是 SessionDispatcherLeaderProcessFactory
+        // dispatcherServiceFactory 类型是 ApplicationDispatcherGatewayServiceFactory
         return new SessionDispatcherLeaderProcessFactory(
                 dispatcherServiceFactory,
                 jobPersistenceComponentFactory,

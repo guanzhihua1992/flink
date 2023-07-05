@@ -29,7 +29,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
-/** {@link JobGraphStore} implementation for a single job. */
+/** {@link JobGraphStore} implementation for a single job.
+ * 持有一个JobGraph* */
 public class SingleJobJobGraphStore implements JobGraphStore {
 
     private final JobGraph jobGraph;

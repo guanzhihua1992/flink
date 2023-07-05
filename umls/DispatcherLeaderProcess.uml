@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcess</OriginalElement>
+  <nodes>
+    <node x="426.0000000000001" y="1489.5">org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess.DispatcherGatewayServiceFactory</node>
+    <node x="0.0" y="1456.0">org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess.DispatcherGatewayService</node>
+    <node x="1289.0" y="1433.5">org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess.State</node>
+    <node x="1254.4233870967744" y="105.0">org.apache.flink.util.AutoCloseableAsync</node>
+    <node x="1301.4233870967744" y="234.0">org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcess</node>
+    <node x="1568.2983870967744" y="432.0">org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess</node>
+    <node x="2434.0" y="1433.5">org.apache.flink.runtime.dispatcher.runner.JobDispatcherLeaderProcess</node>
+    <node x="1320.9233870967744" y="0.0">java.lang.AutoCloseable</node>
+    <node x="1485.0" y="1158.0">org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess</node>
+    <node x="1045.4233870967744" y="630.0">org.apache.flink.runtime.dispatcher.runner.StoppedDispatcherLeaderProcess</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcess" target="org.apache.flink.util.AutoCloseableAsync" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-72.0" />
+      <point x="1515.9233870967744" y="208.0" />
+      <point x="1403.4233870967744" y="208.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess.DispatcherGatewayService" target="org.apache.flink.util.AutoCloseableAsync" relationship="INTERFACE_GENERALIZATION">
+      <point x="-101.5" y="-61.0" />
+      <point x="101.5" y="1137.0" />
+      <point x="198.0000000000001" y="1137.0" />
+      <point x="198.0000000000001" y="208.0" />
+      <point x="1403.4233870967744" y="208.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess.DispatcherGatewayServiceFactory" target="org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess" relationship="INNER_CLASS">
+      <point x="0.0" y="-27.5" />
+      <point x="847.5000000000001" y="1137.0" />
+      <point x="1029.834677419355" y="1137.0" />
+      <point x="1029.834677419355" y="1127.0" />
+      <point x="1707.0483870967744" y="1127.0" />
+      <point x="-138.75" y="337.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.StoppedDispatcherLeaderProcess" target="org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcess" relationship="REALIZATION">
+      <point x="0.0" y="-139.0" />
+      <point x="1259.9233870967744" y="405.0" />
+      <point x="1515.9233870967744" y="405.0" />
+      <point x="0.0" y="72.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess.DispatcherGatewayService" target="org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess" relationship="INNER_CLASS">
+      <point x="101.5" y="-61.0" />
+      <point x="304.5" y="1137.0" />
+      <point x="1029.834677419355" y="1137.0" />
+      <point x="1029.834677419355" y="1127.0" />
+      <point x="1707.0483870967744" y="1127.0" />
+      <point x="-138.75" y="337.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.JobDispatcherLeaderProcess" target="org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.5" />
+      <point x="2856.5" y="1137.0" />
+      <point x="2403.0" y="1137.0" />
+      <point x="2403.0" y="1127.0" />
+      <point x="1984.5483870967744" y="1127.0" />
+      <point x="138.75" y="337.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess.State" target="org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess" relationship="INNER_CLASS">
+      <point x="0.0" y="-83.5" />
+      <point x="1377.0" y="1137.0" />
+      <point x="1029.834677419355" y="1137.0" />
+      <point x="1029.834677419355" y="1127.0" />
+      <point x="1707.0483870967744" y="1127.0" />
+      <point x="-138.75" y="337.0" />
+    </edge>
+    <edge source="org.apache.flink.util.AutoCloseableAsync" target="java.lang.AutoCloseable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-38.5" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess" target="org.apache.flink.runtime.dispatcher.runner.DispatcherLeaderProcess" relationship="REALIZATION">
+      <point x="0.0" y="-337.0" />
+      <point x="1845.7983870967744" y="405.0" />
+      <point x="1515.9233870967744" y="405.0" />
+      <point x="0.0" y="72.0" />
+    </edge>
+    <edge source="org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess" target="org.apache.flink.runtime.dispatcher.runner.AbstractDispatcherLeaderProcess" relationship="GENERALIZATION">
+      <point x="0.0" y="-359.0" />
+      <point x="1949.5" y="1137.0" />
+      <point x="2403.0" y="1137.0" />
+      <point x="2403.0" y="1127.0" />
+      <point x="1984.5483870967744" y="1127.0" />
+      <point x="138.75" y="337.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.3328059071729958" showDependencies="false" x="1639.5" y="938.0" />
+  <SelectedNodes>
+    <node>org.apache.flink.runtime.dispatcher.runner.StoppedDispatcherLeaderProcess</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
