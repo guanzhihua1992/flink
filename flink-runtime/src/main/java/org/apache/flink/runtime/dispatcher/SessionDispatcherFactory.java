@@ -46,6 +46,9 @@ public enum SessionDispatcherFactory implements DispatcherFactory {
                 recoveredJobs,
                 recoveredDirtyJobResults,
                 dispatcherBootstrapFactory,
+                // DispatcherServices包 含了Dispatcher组件用到的服务，
+                // Dispatcher组件会在初始化的过程中从 DispatcherServices获取这些服务，
+                // 比如highAvailabilityServices、 heartbeatServices等。
                 DispatcherServices.from(
                         partialDispatcherServicesWithJobPersistenceComponents,
                         JobMasterServiceLeadershipRunnerFactory.INSTANCE,

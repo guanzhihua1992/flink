@@ -62,6 +62,10 @@ class DefaultDispatcherGatewayServiceFactory
 
         final Dispatcher dispatcher;
         try {
+            //调用dispatcherFactory创建dispatcher组件。
+            // 参数包括 rpcService、fencingToken以及从JobGraphStore中恢复的recoveredJobs集合，
+            // 还有通过partialDispatcherServices和jobGraphWriter jobResultStore
+            // 创建的 PartialDispatcherServicesWithJobPersistenceComponents。
             dispatcher =
                     dispatcherFactory.createDispatcher(
                             rpcService,
@@ -75,9 +79,9 @@ class DefaultDispatcherGatewayServiceFactory
         } catch (Exception e) {
             throw new FlinkRuntimeException("Could not create the Dispatcher rpc endpoint.", e);
         }
-
+        //启动dispatcher
         dispatcher.start();
-
+        //将dispatcher放置在DefaultDispatcherGatewayService中并返回
         return DefaultDispatcherGatewayService.from(dispatcher);
     }
 }
