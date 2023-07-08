@@ -105,6 +105,7 @@ public enum ResultPartitionType {
 
     /**
      * Can this result partition be consumed by multiple downstream consumers for multiple times.
+     * 是否支持多个下游消费多次*
      */
     private final boolean isReconsumable;
 
